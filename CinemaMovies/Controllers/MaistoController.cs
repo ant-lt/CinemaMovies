@@ -7,5 +7,11 @@ namespace CinemaMovies.Controllers
     [ApiController]
     public class MaistoController : ControllerBase
     {
+
+        public MaistoController()
+        {
+
+        }
+
     }
 }
