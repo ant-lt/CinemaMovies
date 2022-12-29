@@ -11,6 +11,7 @@ namespace CinemaMovies.Models
 
         [Display(Name = "ItemId")]
         public int ItemId { get; set; }
+        public Item Item { get; set; }
 
         [Display(Name = "Count")]
         public int Count { get; set; }

@@ -1,3 +1,6 @@
+using CinemaMovies.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace CinemaMovies
 {
     public class Program
@@ -7,6 +10,13 @@ namespace CinemaMovies
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+
+
+            builder.Services.AddDbContext<CinemaContext>(option =>
+            {
+                option.UseSqlite(builder.Configuration.GetConnectionString("MySQLiteConnection"));
+            });
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
