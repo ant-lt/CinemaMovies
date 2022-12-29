@@ -6,27 +6,17 @@ namespace CinemaMovies.Models
     public class PurchaseItem
     {
         [Required]
-        [Display(Name = "PirkinioId")]
-        public int PurchaseId { get; set; }
+        [Display(Name = "PurchaseItemId")]
+        public int PurchaseItemId { get; set; }
 
-        [Display(Name = "Statusas")]
-        public string PurchaseStatus { get; set; }
+        [Display(Name = "ItemId")]
+        public int ItemId { get; set; }
 
-        [Display(Name = "UserioId")]
-        public int UserId { get; set; }
+        [Display(Name = "Count")]
+        public int Count { get; set; }
 
-        [Display(Name = "PrekiuSarasas")]
-        public PurchaseItem PurchaseItems { get; set; }
-
-        [Display(Name = "VisoKaina")]
-        public double TotalPrice { get; set; }
-
-        [Display(Name = "Data")]
-        public DateTime DateTime { get; set; }
-
-
-
-
+        [Display(Name = "MovieId")]
+        public int MovieId { get; set; }
 
 
 
