@@ -7,9 +7,6 @@
         public string Description { get; set; }
         public int Author { get; set; }
         public int MovieRating { get; set; }
-        public List<MovieReview> MovieReview { get; set; }
-
-
-
+        public List<MovieReview> MovieReviews { get; set; }
     }
 }

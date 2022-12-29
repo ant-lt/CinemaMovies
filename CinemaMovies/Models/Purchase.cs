@@ -18,7 +18,7 @@ namespace CinemaMovies.Models
         public int UserId { get; set; }
 
         [Display(Name = "PrekiuSarasas")]
-        public PurchaseItem PurchaseItems { get; set; }
+        public List<PurchaseItem> PurchaseItems { get; set; }
 
         [Display(Name = "VisoKaina")]
         public double TotalPrice { get; set; }

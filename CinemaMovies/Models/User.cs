@@ -1,6 +1,4 @@
-﻿using CinemaMovies.Enums;
-
-namespace CinemaMovies.Models
+﻿namespace CinemaMovies.Models
 {
     public class User
     {
