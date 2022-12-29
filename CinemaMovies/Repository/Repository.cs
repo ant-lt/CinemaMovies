@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using CinemaMovies.Data;
 
 namespace CinemaMovies.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
-        {
+
             private readonly CinemaMoviesContext _db;
             private DbSet<TEntity> _dbSet;
 
@@ -61,7 +61,7 @@ namespace CinemaMovies.Repositories
             {
                 await _db.SaveChangesAsync();
             }
-        }
-
     }
+
 }
+

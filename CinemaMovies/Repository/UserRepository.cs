@@ -1,4 +1,5 @@
-﻿using CinemaMovies.Models;
+﻿using CinemaMovies.Data;
+using CinemaMovies.Models;
 using CinemaMovies.Repositories.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
@@ -25,7 +26,7 @@ namespace CinemaMovies.Repositories
         /// <returns>A flag indicating if username already exists</returns>
         public async Task<bool> IsUniqueUserAsync(string username)
         {
-            var user = await _db.Users.FirstOrDefaultAsync(x => x.Username == username);
+            var user = await _db.Users.FirstOrDefaultAsync(x => x.UserName == username);
             if (user == null)
             {
                 return true;
@@ -36,7 +37,7 @@ namespace CinemaMovies.Repositories
         public async Task<User> LoginAsync(User loginRequest)
         {
             var inputPasswordBytes = Encoding.UTF8.GetBytes(loginRequest.Password);
-            var user = await _db.LocalUsers.FirstOrDefaultAsync(x => x.Username.ToLower() == loginRequest.Username.ToLower());
+            var user = await _db.Users.FirstOrDefaultAsync(x => x.UserName.ToLower() == loginRequest.UserName.ToLower());
 
 
             if (user == null || !_passwordService.VerifyPasswordHash(loginRequest.Password, user.PasswordHash, user.PasswordSalt))
@@ -48,8 +49,8 @@ namespace CinemaMovies.Repositories
                 };
             }
 
-            var userRole = await _db.Roles.FirstOrDefaultAsync(x => x.Id == user.RoleId);
-            var userRoleName = userRole.Name;
+          //  var userRole = await _db.Roles.FirstOrDefaultAsync(x => x.Id == user.RoleId);
+          //  var userRoleName = userRole.Name;
 
             //var token = _jwtService.GetJwtToken(user.Id, user.RoleName);
             var token = _jwtService.GetJwtToken(user.Id, userRoleName);
@@ -62,8 +63,8 @@ namespace CinemaMovies.Repositories
                 User = user
             };
 
-            loginResponse.User.PasswordHash = null;
-            loginResponse.User.PasswordSalt = null;
+        //    loginResponse.User.PasswordHash = null;
+        //    loginResponse.User.PasswordSalt = null;
 
             return loginResponse;
         }
