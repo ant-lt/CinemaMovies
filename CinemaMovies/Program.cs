@@ -13,7 +13,7 @@ namespace CinemaMovies
 
 
 
-            builder.Services.AddDbContext<CinemaContext>(option =>
+            builder.Services.AddDbContext<CinemaMoviesContext>(option =>
             {
                 option.UseSqlite(builder.Configuration.GetConnectionString("MySQLiteConnection"));
             });
