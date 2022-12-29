@@ -9,14 +9,10 @@ namespace CinemaMovies.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly CinemaMoviesContext _db;
-        private readonly IPasswordService _passwordService;
-        private readonly IJwtService _jwtService;
 
-        public UserRepository(CinemaMoviesContext db, IPasswordService passwordService, IJwtService jwtService)
+        public UserRepository(CinemaMoviesContext db)
         {
             _db = db;
-            _passwordService = passwordService;
-            _jwtService = jwtService;
         }
 
         /// <summary>
@@ -36,37 +32,23 @@ namespace CinemaMovies.Repositories
 
         public async Task<User> LoginAsync(User loginRequest)
         {
-            var inputPasswordBytes = Encoding.UTF8.GetBytes(loginRequest.Password);
+           
             var user = await _db.Users.FirstOrDefaultAsync(x => x.UserName.ToLower() == loginRequest.UserName.ToLower());
 
 
-            if (user == null || !_passwordService.VerifyPasswordHash(loginRequest.Password, user.PasswordHash, user.PasswordSalt))
+            if (user == null )
             {
                 return new User
                 {
-                    Token = "",
-                    User = null
+                    UserName = "",
+                    Role = ""
                 };
             }
 
-          //  var userRole = await _db.Roles.FirstOrDefaultAsync(x => x.Id == user.RoleId);
-          //  var userRoleName = userRole.Name;
+            user.Role = "";
 
-            //var token = _jwtService.GetJwtToken(user.Id, user.RoleName);
-            var token = _jwtService.GetJwtToken(user.Id, userRoleName);
 
-            user.Role = null;
-
-            User loginResponse = new()
-            {
-                Token = token,
-                User = user
-            };
-
-        //    loginResponse.User.PasswordHash = null;
-        //    loginResponse.User.PasswordSalt = null;
-
-            return loginResponse;
+            return user;
         }
 
         // Add RegistrationResponse (Should not include password)
@@ -74,26 +56,14 @@ namespace CinemaMovies.Repositories
         public async Task<User> RegisterAsync(User registrationRequest)
         {
 
-            _passwordService.CreatePasswordHash(registrationRequest.Password, out byte[] passwordHash, out byte[] passwordSalt);
-
-
-
             User user = new()
             {
-                Username = registrationRequest.Username,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                Name = registrationRequest.Name,
-                Role = userRole,
-                Active = true,
-                Points = 0,
-                UserLevel = userLevel
+                UserName = registrationRequest.UserName,
+                Role = registrationRequest.Role,
             };
 
-            _db.LocalUsers.Add(user);
+            _db.Users.Add(user);
             await _db.SaveChangesAsync();
-            user.PasswordHash = null;
-            user.PasswordSalt = null;
             return user;
         }
     }
