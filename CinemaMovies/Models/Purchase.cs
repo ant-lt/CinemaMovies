@@ -16,6 +16,7 @@ namespace CinemaMovies.Models
 
         [Display(Name = "UserioId")]
         public int UserId { get; set; }
+        public virtual User User { get; set; }
 
         [Display(Name = "PrekiuSarasas")]
         public List<PurchaseItem> PurchaseItems { get; set; }
