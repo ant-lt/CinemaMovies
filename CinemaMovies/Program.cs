@@ -1,4 +1,6 @@
 using CinemaMovies.Data;
+using CinemaMovies.Repositories.IRepository;
+using CinemaMovies.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace CinemaMovies
@@ -17,6 +19,8 @@ namespace CinemaMovies
             {
                 option.UseSqlite(builder.Configuration.GetConnectionString("MySQLiteConnection"));
             });
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
