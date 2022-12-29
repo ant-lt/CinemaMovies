@@ -3,6 +3,7 @@ using System.Xml.Linq;
 
 namespace CinemaMovies.Models
 {
+    // Temp comment
     public class Purchase
     {
 
@@ -24,9 +25,5 @@ namespace CinemaMovies.Models
 
         [Display(Name = "Data")]
         public DateTime DateTime { get; set; }
-
-
-
-
     }
 }
