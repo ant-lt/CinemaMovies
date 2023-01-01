@@ -11,8 +11,6 @@ namespace CinemaMovies.Controllers
     [ApiController]
     public class CinemaController : ControllerBase
     {
-
-
         private readonly ILogger<CinemaController> _logger;
         private readonly IPurchaseRepository _purchaseRepo;
 
@@ -20,7 +18,7 @@ namespace CinemaMovies.Controllers
         public CinemaController(ILogger<CinemaController> logger, IPurchaseRepository purchaseRepo)
         {
             _logger = logger;
-            _purchaseRepo purchaseRepo;
+            _purchaseRepo = purchaseRepo;
         }
 
 
@@ -54,7 +52,7 @@ namespace CinemaMovies.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Metodas Get gauti Knyga pagal id(userId = {0}) nuluzo del serverio klaidos tokiu laiku - {1} ", userId, DateTime.Now);
+                _logger.LogError(e, "Metodas Get gauti PurchaseHistory pagal id(userId = {0}) nuluzo del serverio klaidos tokiu laiku - {1} ", userId, DateTime.Now);
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }

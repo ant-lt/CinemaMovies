@@ -1,9 +1,10 @@
-﻿namespace CinemaMovies.Repository.IRepository
+﻿using CinemaMovies.Models;
+using CinemaMovies.Repositories.IRepository;
+
+namespace CinemaMovies.Repository.IRepository
 {
-    public class IPurchaseRepository
+    public interface IPurchaseRepository : IRepository<Purchase>
     {
-
-
-
+        Task<Purchase> UpdateAsync(Purchase purchase);
     }
 }
