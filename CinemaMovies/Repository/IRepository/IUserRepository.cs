@@ -1,4 +1,5 @@
 ﻿using CinemaMovies.Models;
+using CinemaMovies.Models.DTO;
 
 namespace CinemaMovies.Repositories.IRepository
 {

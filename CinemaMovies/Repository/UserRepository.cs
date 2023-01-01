@@ -1,5 +1,6 @@
 ﻿using CinemaMovies.Data;
 using CinemaMovies.Models;
+using CinemaMovies.Models.DTO;
 using CinemaMovies.Repositories.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
@@ -38,14 +39,8 @@ namespace CinemaMovies.Repositories
 
             if (user == null )
             {
-                return new User
-                {
-                    UserName = "",
-                    Role = ""
-                };
+                return null;
             }
-
-            user.Role = "";
 
 
             return user;
