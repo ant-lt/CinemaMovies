@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using System.Reflection;
 using CinemaMovies.Service;
+using CinemaMovies.Repository.IRepository;
+using CinemaMovies.Repository;
 
 namespace CinemaMovies
 {
@@ -24,6 +26,8 @@ namespace CinemaMovies
             });
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IMoviesRepository, MoviesRepository>();
+            builder.Services.AddScoped<MovieReviewRepository, MovieReviewRepository>();
             builder.Services.AddTransient<IUserWrapper, UserWrapper>();
 
             builder.Services.AddControllers()

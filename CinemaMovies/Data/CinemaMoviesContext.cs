@@ -1,5 +1,6 @@
 ﻿using CinemaMovies.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace CinemaMovies.Data
 {
@@ -16,7 +17,7 @@ namespace CinemaMovies.Data
         public DbSet<MovieReview> MovieReviews { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<PurchaseItem> PurchaseItems { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
