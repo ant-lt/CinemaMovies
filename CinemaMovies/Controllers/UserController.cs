@@ -25,7 +25,7 @@ namespace CinemaMovies.Controllers
         }
 
         /// <summary>
-        /// Login to library system
+        /// Login to cinema system
         /// </summary>
         /// <param name="loginData"></param>
         /// <returns>Status code</returns>
@@ -59,7 +59,7 @@ namespace CinemaMovies.Controllers
         }
 
         /// <summary>
-        /// New user registration to library system
+        /// New user registration to cinema system
         /// </summary>
         /// <param name="registrationData"></param>
         /// <returns>Status code</returns>
